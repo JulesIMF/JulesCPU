@@ -82,7 +82,7 @@ void writeSignature(ByteCode* bytecode, ProgramParameters parameters)
 
 static void putToListing(FILE* file, int realRip, Instruction instruction, Line line)
 {
-    fprintf(file, "0x%08X  (0x%08X)\t%-20s\t", realRip, (int)(realRip - _JCPU_SIGNATURE_SIZE), line.string);
+    fprintf(file, "0x%08X  (0x%08X)\t%-27s\t", realRip, (int)(realRip - _JCPU_SIGNATURE_SIZE), line.string);
     for (int i = 0; i != instruction.length; i++)
     {
         fprintf(file, "%02X ", instruction.code[i] & 255);
@@ -104,9 +104,9 @@ static FILE* initListing(char const* asmName, ProgramParameters parameters)
 
     fprintf(file, "Program size = %lld\nStack size   = %lld\n", parameters.programSize, parameters.stackSize);
     fprintf(file,
-        "\n\n\n--------------------------------------------------------------------------------------------------------------\n"
-        "real RIP    virtual RIP         mnemonics               byte code\n"
-        "--------------------------------------------------------------------------------------------------------------\n");
+        "\n\n\n---------------------------------------------------------------------------------------------------------------------\n"
+        "real RIP    virtual RIP         mnemonics                      byte code\n"
+        "---------------------------------------------------------------------------------------------------------------------\n");
 
     return file;
 }

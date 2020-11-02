@@ -143,10 +143,10 @@ void writeAlu(FILE* file, byte* code, int operands)
             fprintf(file, "[");
 
         if (AST < AST_STACKTOP)
-            fprintf(file, "r%cx ", 'a' + AST);
+            fprintf(file, "r%cx", 'a' + AST);
 
         if (AST == AST_STACKTOP)
-            fprintf(file, "rsp ");
+            fprintf(file, "rsp");
 
         if (AST > AST_CONST)
             fprintf(file, "AST%d ", AST);
